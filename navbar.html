@@ -1,0 +1,31 @@
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <span class="blood-drop">❤️</span>
+            <span>Blood Donation</span>
+        </div>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#home" onclick="scrollToSection('home'); closeMobileMenu();">Home</a></li>
+            <li><a href="#blood" onclick="loadSection('blood-types'); closeMobileMenu();">Blood Types</a></li>
+            <li class="dropdown">
+                <a href="#register" onclick="loadSection('register'); closeMobileMenu();">Register</a>
+                <div class="dropdown-menu">
+                    <a onclick="loadSection('register'); closeMobileMenu();">Register as Donor</a>
+                    <a onclick="loadSection('hospital-register'); closeMobileMenu();">Register as Hospital</a>
+                </div>
+            </li>
+            <li><a href="#login" onclick="loadSection('login'); closeMobileMenu();">Login</a></li>
+            <li><a href="#about" onclick="loadSection('about'); closeMobileMenu();">About</a></li>
+            <li><a href="#donate" onclick="loadSection('donate'); closeMobileMenu();">Donate</a></li>
+            <li><a href="#blood-camps" onclick="closeMobileMenu();">Blood Camps</a></li>
+            <li><a href="#guidelines" onclick="loadSection('guidelines'); closeMobileMenu();">Guidelines</a></li>
+            <li><button class="request-blood-btn" onclick="openBloodRequestModal(); closeMobileMenu();">🩸 Request Blood</button></li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,33 @@
+@import url("styles.css");
+
+/* Page-specific styles for contact.html */
+
+/* Responsive Styles for Contact Page */
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 40px 15px;
+    }
+
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 1.2rem;
+    }
+}

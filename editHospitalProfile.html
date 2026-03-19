@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="../css/editProfile.css">
+<script src="../js/editHospitalProfile.js"></script>
+<section id="editHospitalProfile" class="edit-profile-section">
+  <div class="container">
+    <div class="top-actions">
+      <button class="back-btn" onclick="window.location.href='hospital-dashboard.html'">← Back to Dashboard</button>
+    </div>
+    
+    <div class="edit-card">
+      <h2>🏥 Edit Hospital Profile</h2>
+      <p style="color: #666; margin-bottom: 20px;">Update your hospital information</p>
+      
+      <form class="edit-profile-form" id="hospital-edit-form">
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-hospitalName">Hospital Name *</label>
+            <input type="text" id="eh-hospitalName" name="hospitalName" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eh-email">Email Address *</label>
+            <input type="email" id="eh-email" name="email" required readonly>
+          </div>
+          <div class="form-group">
+            <label for="eh-phone">Phone Number *</label>
+            <input type="tel" id="eh-phone" name="phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-licenseNumber">License Number *</label>
+            <input type="text" id="eh-licenseNumber" name="licenseNumber" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-address">Address *</label>
+            <input type="text" id="eh-address" name="address" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eh-city">City *</label>
+            <input type="text" id="eh-city" name="city" required>
+          </div>
+          <div class="form-group">
+            <label for="eh-state">State/Province *</label>
+            <input type="text" id="eh-state" name="state" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eh-zipcode">Zipcode *</label>
+            <input type="text" id="eh-zipcode" name="zipcode" required>
+          </div>
+          <div class="form-group">
+            <label for="eh-country">Country *</label>
+            <input type="text" id="eh-country" name="country" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-description">Hospital Description *</label>
+            <textarea id="eh-description" name="description" rows="3" placeholder="Brief description of your hospital..." required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-services">Services Offered *</label>
+            <textarea id="eh-services" name="services" rows="3" placeholder="List the main services you offer..." required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="eh-website">Website</label>
+            <input type="url" id="eh-website" name="website" placeholder="https://example.com">
+          </div>
+        </div>
+
+        <div class="completion-status" id="hospitalCompletionStatus">
+          <p id="completionMessage"></p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="completionProgress"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="save-btn">💾 Save Changes</button>
+          <button type="button" class="cancel-btn" onclick="window.location.href='hospital-dashboard.html'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

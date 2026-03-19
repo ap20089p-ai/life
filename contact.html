@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="../css/contact.css">
+<script src="../js/contact.js"></script>
+<section id="contact" class="contact">
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <button class="close-btn" onclick="closeSection()">✕ Close</button>
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Find a Donation Center</h3>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <div>
+                        <h4>Blood Bank Locations</h4>
+                        <p>Visit your nearest blood bank to donate. Check our website for center locations and hours.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>1-800-DONATE-BLOOD (1-800-366-2835)</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">✉️</span>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>info@blooddonation.org</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">⏰</span>
+                    <div>
+                        <h4>Hours</h4>
+                        <p>Mon-Fri: 7am - 7pm<br>Sat: 8am - 4pm<br>Sun: Closed</p>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <h3>Schedule a Donation</h3>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Your Phone" required>
+                <input type="date" placeholder="Preferred Date" required>
+                <textarea placeholder="Any questions or special requests?" rows="4"></textarea>
+                <button type="submit" class="submit-btn">Schedule Appointment</button>
+            </form>
+        </div>
+    </div>
+</section>

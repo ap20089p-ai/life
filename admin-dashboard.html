@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Database Management</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">⚙️</span>
+                    <span class="logo-text">Admin Panel</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="overview">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="donors">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Donors</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="hospitals">
+                    <span class="nav-icon">🏥</span>
+                    <span class="nav-text">Hospitals</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="donations">
+                    <span class="nav-icon">🩸</span>
+                    <span class="nav-text">Donations</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="requests">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Blood Requests</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="database">
+                    <span class="nav-icon">💾</span>
+                    <span class="nav-text">Database</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+                    <h1 class="page-title">Database Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" id="globalSearch" placeholder="Search...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            🔔
+                            <span class="badge">5</span>
+                        </button>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="https://via.placeholder.com/40" alt="Admin" class="profile-pic">
+                        <span class="profile-name">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tab Content -->
+            <div class="content-area">
+                <!-- Overview Tab -->
+                <section id="overview-tab" class="tab-content active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #ff6b6b;">👥</div>
+                            <div class="stat-info">
+                                <h3 id="totalDonors">0</h3>
+                                <p>Total Donors</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #4ecdc4;">🏥</div>
+                            <div class="stat-info">
+                                <h3 id="totalHospitals">0</h3>
+                                <p>Total Hospitals</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #95e1d3;">🩸</div>
+                            <div class="stat-info">
+                                <h3 id="totalDonations">0</h3>
+                                <p>Total Donations</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #f38181;">📋</div>
+                            <div class="stat-info">
+                                <h3 id="totalRequests">0</h3>
+                                <p>Blood Requests</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3>Blood Type Distribution</h3>
+                            <canvas id="bloodTypeChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Recent Activity</h3>
+                            <div id="recentActivity" class="activity-list"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Donors Tab -->
+                <section id="donors-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>Donor Management</h2>
+                        <button class="btn-primary" onclick="refreshDonors()">🔄 Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Blood Type</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
+                                    <th>Registered</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donorsTableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">Loading donors...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Hospitals Tab -->
+                <section id="hospitals-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>Hospital Management</h2>
+                        <button class="btn-primary" onclick="refreshHospitals()">🔄 Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Hospital Name</th>
+                                    <th>Type</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
+                                    <th>Blood Bank</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hospitalsTableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">Loading hospitals...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Donations Tab -->
+                <section id="donations-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>Donation Records</h2>
+                        <button class="btn-primary" onclick="refreshDonations()">🔄 Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Donor ID</th>
+                                    <th>Donor Name</th>
+                                    <th>Blood Type</th>
+                                    <th>Units</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donationsTableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">Loading donations...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Requests Tab -->
+                <section id="requests-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>Blood Requests</h2>
+                        <button class="btn-primary" onclick="refreshRequests()">🔄 Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Requester</th>
+                                    <th>Blood Type</th>
+                                    <th>Units</th>
+                                    <th>Hospital</th>
+                                    <th>Urgency</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="requestsTableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">Loading requests...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Database Tab -->
+                <section id="database-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>Database Management</h2>
+                    </div>
+                    <div class="database-actions">
+                        <div class="action-card">
+                            <h3>📂 Database Info</h3>
+                            <div class="db-info" id="databaseInfo">
+                                <p>Loading database information...</p>
+                            </div>
+                        </div>
+                        <div class="action-card">
+                            <h3>🔧 Quick Actions</h3>
+                            <div class="action-buttons">
+                                <button class="btn-action" onclick="exportDatabase()">
+                                    📥 Export Database
+                                </button>
+                                <button class="btn-action" onclick="backupDatabase()">
+                                    💾 Backup Database
+                                </button>
+                                <button class="btn-action" onclick="optimizeDatabase()">
+                                    ⚡ Optimize Database
+                                </button>
+                                <button class="btn-action danger" onclick="clearAllData()">
+                                    🗑️ Clear All Data
+                                </button>
+                            </div>
+                        </div>
+                        <div class="action-card">
+                            <h3>📊 Table Statistics</h3>
+                            <div id="tableStats" class="table-stats">
+                                <p>Loading statistics...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Tab -->
+                <section id="settings-tab" class="tab-content">
+                    <div class="section-header">
+                        <h2>System Settings</h2>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>🔐 Security Settings</h3>
+                            <div class="setting-item">
+                                <label>Admin Password</label>
+                                <button class="btn-secondary">Change Password</button>
+                            </div>
+                            <div class="setting-item">
+                                <label>Two-Factor Authentication</label>
+                                <label class="toggle">
+                                    <input type="checkbox" id="twoFactor">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h3>📧 Email Settings</h3>
+                            <div class="setting-item">
+                                <label>Email Notifications</label>
+                                <label class="toggle">
+                                    <input type="checkbox" id="emailNotif" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>Auto-Response</label>
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoResponse">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h3>🎨 Appearance</h3>
+                            <div class="setting-item">
+                                <label>Dark Mode</label>
+                                <label class="toggle">
+                                    <input type="checkbox" id="darkMode">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>Theme Color</label>
+                                <input type="color" value="#c41e3a" class="color-picker">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

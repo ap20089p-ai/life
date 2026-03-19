@@ -1,0 +1,77 @@
+@import url("styles.css");
+
+/* Registration Links Styles */
+.register-links {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.register-links p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.register-links a {
+    color: #dc143c;
+    text-decoration: none;
+    font-weight: 900;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+.register-links a button{
+    background: #dc143c;
+    color: white;
+    border: none;
+    padding: 10px 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-links a:hover {
+    color: #a01830;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Button Box Container */
+.registration-form {
+    background: white;
+}
+
+.registration-form > .form-group:last-of-type {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form .register-btn {
+    background: linear-gradient(135deg, #c41e3a 0%, #8f1428 100%);
+    padding: 16px 20px;
+    border: 3px solid #8f1428;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.registration-form .register-btn:hover {
+    background: linear-gradient(135deg, #8f1428 0%, #c41e3a 100%);
+    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.registration-form .register-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Page-specific styles for register.html */
+

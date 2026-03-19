@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="../css/register.css">
+<script src="../js/hospital-register.js"></script>
+<script src="../js/form-autosave.js"></script>
+<section id="hospital-register" class="registration">
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+
+        <h2>Register Your Hospital</h2>
+        <p class="section-subtitle">Connect with blood donors and manage blood inventory</p>
+        
+        <div class="register-links">
+            <p>Registering as a Donor? <a href="#" onclick="loadSection('register')"><button>Register as Donor</button></a></p>
+        </div>
+
+        <div class="registration-content">
+            <!-- HOSPITAL REGISTRATION FORM -->
+            <form id="hospital-form" class="registration-form" method="POST" action="#" onsubmit="handleHospitalRegistration(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospital-name">Hospital Name *</label>
+                        <input type="text" id="hospital-name" name="hospitalName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospital-email">Email Address *</label>
+                        <input type="email" id="hospital-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-phone">Phone Number *</label>
+                        <input type="tel" id="hospital-phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospital-license">License Number *</label>
+                        <input type="text" id="hospital-license" name="licenseNumber" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hospital-password">Password *</label>
+                        <input type="password" id="hospital-password" name="password" required minlength="6" placeholder="Minimum 6 characters">
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-confirm-password">Confirm Password *</label>
+                        <input type="password" id="hospital-confirm-password" name="confirmPassword" required minlength="6" placeholder="Re-enter your password">
+                    </div>
+                </div>
+
+                <button type="submit" class="register-btn">Register as Hospital</button>
+            </form>
+
+            <!-- Hospital Info Section -->
+            <div id="hospital-info" class="registration-info">
+                <h3>Why Register as a Hospital?</h3>
+                <div class="info-box">
+                    <div class="icon">✓</div>
+                    <p>Access network of verified blood donors</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">✓</div>
+                    <p>Request blood urgently in emergencies</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">✓</div>
+                    <p>Manage blood inventory efficiently</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">✓</div>
+                    <p>Track blood donations and recipients</p>
+                </div>
+                <div class="info-box">
+                    <div class="icon">✓</div>
+                    <p>Connect with other healthcare facilities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

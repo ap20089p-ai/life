@@ -1,0 +1,24 @@
+@import url("styles.css");
+
+/* Back buttons in homepage sections */
+#blood .back-btn,
+#give-blood .back-btn {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    top: auto;
+    right: auto;
+    z-index: auto;
+}
+
+/* Blood section styling */
+#blood {
+    scroll-behavior: smooth;
+    margin: 20px 0;
+}
+
+/* Give Blood section styling */
+#give-blood {
+    scroll-behavior: smooth;
+    margin: 20px 0;
+}

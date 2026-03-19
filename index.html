@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation - Save Lives</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar will be loaded here -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section will be loaded here -->
+    <div id="hero-container"></div>
+    <!-- Dynamic Content Container -->
+    <div id="content-container"></div>
+
+    <!-- Blood Request Modal -->
+    <div id="bloodRequestModal" class="blood-request-modal" style="display: none;">
+        <div class="blood-request-modal-content">
+            <div class="blood-request-modal-header">
+                <h2>🩸 Request Blood</h2>
+                <span class="close-blood-request" onclick="closeBloodRequestModal()">&times;</span>
+            </div>
+            <form id="homeBloodRequestForm" class="blood-request-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="home-req-blood-type">Blood Type *</label>
+                        <select id="home-req-blood-type" name="bloodType" required>
+                            <option value="">Select Blood Type</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="home-req-units">Units Required *</label>
+                        <input type="number" id="home-req-units" name="units" min="1" max="20" required placeholder="e.g., 2">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="home-req-urgency">Urgency Level *</label>
+                        <select id="home-req-urgency" name="urgency" required>
+                            <option value="">Select Urgency</option>
+                            <option value="Critical">🔴 Critical (Immediate)</option>
+                            <option value="Urgent">⚠️ Urgent (Within 24 hours)</option>
+                            <option value="Normal">✅ Normal (Within 3 days)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="home-req-hospital">Hospital/Medical Center *</label>
+                        <input type="text" id="home-req-hospital" name="hospital" required placeholder="Hospital name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="home-req-patient-name">Patient Name *</label>
+                        <input type="text" id="home-req-patient-name" name="patientName" required placeholder="Patient's full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="home-req-contact">Contact Number *</label>
+                        <input type="tel" id="home-req-contact" name="contact" required placeholder="Emergency contact">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="home-req-email">Email Address *</label>
+                        <input type="email" id="home-req-email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="home-req-address">Current Address to requerd blood *</label>
+                        <input type="text" id="home-req-address" name="address" required placeholder="Hospital/Clinic address">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="home-req-location"> your Location/City *</label>
+                        <input type="text" id="home-req-location" name="location" required placeholder="City/Location where blood is needed">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="home-req-reason">Reason/Diagnosis *</label>
+                        <textarea id="home-req-reason" name="reason" rows="6" required placeholder="e.g., Surgery, Accident, Anemia treatment, Cancer treatment, etc." style="resize: vertical; min-height: 120px;"></textarea>
+                        <small style="color: #666; margin-top: 5px; display: block;">💡 Examples: Emergency surgery, Accident/Trauma, Chronic disease, Cancer treatment, Blood disorder, Post-operative recovery, etc.</small>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="home-req-notes">Additional Notes</label>
+                        <textarea id="home-req-notes" name="notes" rows="2" placeholder="Any additional information..."></textarea>
+                    </div>
+                </div>
+
+                <div class="request-summary-box">
+                    <h4>Request Summary:</h4>
+                    <p>Blood Type: <strong id="home-summary-blood-type">--</strong></p>
+                    <p>Units: <strong id="home-summary-units">--</strong></p>
+                    <p>Urgency: <strong id="home-summary-urgency">--</strong></p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit-request">Submit Request</button>
+                    <button type="button" class="btn-cancel-request" onclick="closeBloodRequestModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

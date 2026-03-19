@@ -1,0 +1,181 @@
+@import url("../../css/styles.css");
+
+/* Page-specific styles for about.html */
+
+.impact-section {
+    margin-top: 60px;
+    padding: 40px;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    border-radius: 15px;
+}
+
+.impact-section h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #c41e3a;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+}
+
+.impact-item {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(196, 30, 58, 0.1);
+    transition: all 0.3s ease;
+}
+
+.impact-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(196, 30, 58, 0.2);
+}
+
+.impact-number {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #c41e3a;
+    margin-bottom: 10px;
+}
+
+.impact-item h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.impact-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.call-to-action-box {
+    margin-top: 60px;
+    background: linear-gradient(135deg, #c41e3a 0%, #8f1428 100%);
+    color: white;
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+}
+
+.call-to-action-box h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.call-to-action-box p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.call-to-action-box .cta-btn {
+    background: white;
+    color: #c41e3a;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.call-to-action-box .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles for About Page */
+@media (max-width: 768px) {
+    .impact-section {
+        padding: 30px 20px;
+    }
+
+    .impact-section h3 {
+        font-size: 1.6rem;
+    }
+
+    .impact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+    }
+
+    .impact-item {
+        padding: 20px;
+    }
+
+    .impact-number {
+        font-size: 2.2rem;
+    }
+
+    .impact-item h4 {
+        font-size: 1rem;
+    }
+
+    .call-to-action-box {
+        padding: 35px 20px;
+    }
+
+    .call-to-action-box h3 {
+        font-size: 1.6rem;
+    }
+
+    .call-to-action-box p {
+        font-size: 1rem;
+    }
+
+    .call-to-action-box .cta-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .impact-section {
+        padding: 25px 15px;
+    }
+
+    .impact-section h3 {
+        font-size: 1.4rem;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .impact-item {
+        padding: 18px;
+    }
+
+    .impact-number {
+        font-size: 2rem;
+    }
+
+    .call-to-action-box {
+        padding: 30px 15px;
+    }
+
+    .call-to-action-box h3 {
+        font-size: 1.4rem;
+    }
+
+    .call-to-action-box p {
+        font-size: 0.95rem;
+    }
+
+    .call-to-action-box .cta-btn {
+        width: 100%;
+        padding: 12px 25px;
+    }
+}

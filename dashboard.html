@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="../css/dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/dashboard.js"></script>
+<section id="dashboard" class="dashboard-section">
+    <!-- Sidebar -->
+    <aside class="donor-sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icon">🩸</div>
+            <h2>Blood Connect</h2>
+            <p class="logo-subtitle">Donor Portal</p>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <a href="#" class="sidebar-item active" onclick="showDashboardSection('overview')">
+                <span class="sidebar-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="sidebar-item" id="donations-menu" onclick="showDashboardSection('donations')" style="display: none;">
+                <span class="sidebar-icon">💉</span>
+                <span>My Donations</span>
+            </a>
+            <a href="#" class="sidebar-item" onclick="showDashboardSection('appointments')">
+                <span class="sidebar-icon">📅</span>
+                <span>Appointments</span>
+            </a>
+            <a href="#" class="sidebar-item" onclick="showDashboardSection('messages')">
+                <span class="sidebar-icon">📬</span>
+                <span>Messages</span>
+                <span id="unread-badge" style="display: none; background: #c41e3a; color: white; font-size: 10px; padding: 2px 6px; border-radius: 10px; margin-left: 5px;">0</span>
+            </a>
+            <a href="#" class="sidebar-item" onclick="showDashboardSection('health')">
+                <span class="sidebar-icon">🏥</span>
+                <span>Health Records</span>
+            </a>
+            <a href="#" class="sidebar-item" id="certificates-menu" onclick="showDashboardSection('certificates')" style="display: none;">
+                <span class="sidebar-icon">📜</span>
+                <span>Certificates</span>
+            </a>
+            <div class="sidebar-divider"></div>
+            <a href="#" class="sidebar-item logout-item" onclick="return handleLogout(event)">
+                <span class="sidebar-icon">🚪</span>
+                <span>Logout</span>
+            </a>
+        </nav>    
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="donor-main-content">
+        <!-- Top Header -->
+        <header class="donor-top-header">
+            <div class="header-left">
+                <h1 id="page-title">Dashboard</h1>
+                <p id="page-subtitle">Welcome back, Donor!</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info" onclick="toggleProfileDropdown()" style="cursor: pointer; position: relative;">
+                    <span id="header-user-name">User</span>
+                    <div class="user-avatar" id="header-profile-avatar" style="width: 40px; height: 40px; border-radius: 50%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; font-size: 20px; background-color: #e3f2fd;">👤</div>
+                    
+                    <!-- Profile Dropdown Menu -->
+                    <div id="profile-dropdown" class="profile-dropdown" style="display: none; position: absolute; top: 50px; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; min-width: 180px;">
+                        <a href="#" onclick="showProfileModal(event)" style="display: block; padding: 12px 16px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0;">👤 View Profile</a>
+                        <a href="editProfile.html" style="display: block; padding: 12px 16px; color: #333; text-decoration: none;">✏️ Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="donor-content-area">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+
+            <!-- Top Stats Cards -->
+            <div class="stats-row">
+                <div class="stat-card primary">
+                    <div class="stat-icon">🩸</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Donations</p>
+                        <p class="stat-value" id="total-donations">0</p>
+                    </div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Lives Saved</p>
+                        <p class="stat-value" id="lives-saved-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card warning">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Days Until Next Donation</p>
+                        <p class="stat-value" id="days-until-donation">90</p>
+                    </div>
+                </div>
+                <div class="stat-card info">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Donor Status</p>
+                        <p class="stat-value" id="donor-level">New</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <!-- Donation Chart -->
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Donations This Year</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="donationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+         
+
+            <!-- Donations History Section -->
+            <section id="donations" class="content-section">
+            <div class="activity-section">
+                <div class="card-header">
+                    <h3>📜 Donation History</h3>
+                </div>
+                <div class="activity-list" id="activity-list">
+                    <p class="no-activity">No donation history yet. Start your donor journey today!</p>
+                </div>
+            </div>
+            </section>
+
+
+
+            <!-- Health Records Section -->
+            <section id="health" class="content-section">
+            <div class="health-section">
+            </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="content-section">
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h3>📅 My Appointments</h3>
+                        <button class="schedule-btn" onclick="scheduleAppointment()">
+                            + Schedule New Appointment
+                        </button>
+                    </div>
+                    <div class="appointments-list" id="appointments-list">
+                        <p>No appointments scheduled yet.</p>
+                    </div>
+                </div>
+                <div id="appointment-form-section" class="appointment-form-section hidden">
+                    <div class="appointment-form-card">
+                        <div class="modal-header">
+                            <h3>Schedule Donation Appointment</h3>
+                            <button class="close-modal" onclick="closeAppointmentModal()">&times;</button>
+                        </div>
+                        <form class="appointment-form" onsubmit="handleAppointmentSubmit(event)">
+                            <!-- Donor Information (Auto-filled) -->
+                            <div style="background: #f0f0f0; padding: 12px; border-radius: 5px; margin-bottom: 16px;">
+                                <h4 style="margin: 0 0 12px 0;">Your Information (Auto-filled)</h4>
+                                <div class="form-group">
+                                    <label for="apt-donor-name">Your Name:</label>
+                                    <input type="text" id="apt-donor-name" readonly style="background: white;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apt-donor-blood">Blood Type:</label>
+                                    <input type="text" id="apt-donor-blood" readonly style="background: white;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apt-donor-email">Email:</label>
+                                    <input type="email" id="apt-donor-email" readonly style="background: white;">
+                                </div>
+                            </div>
+                            
+                            <!-- Hospital Selection -->
+                            <h4 style="margin-bottom: 12px;">Select Hospital/Center</h4>
+                            <div class="form-group">
+                                <label for="apt-hospital">Hospital/Donation Center:</label>
+                                <select id="apt-hospital" required onchange="updateHospitalInfo()">
+                                    <option value="">-- Select a hospital --</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Hospital Details (Auto-filled) -->
+                            <div style="background: #e3f2fd; padding: 12px; border-radius: 5px; margin-bottom: 16px;">
+                                <h4 style="margin: 0 0 12px 0;">Hospital Details (Auto-filled)</h4>
+                                <div class="form-group">
+                                    <label for="apt-hospital-name">Hospital Name:</label>
+                                    <input type="text" id="apt-hospital-name" readonly style="background: white;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apt-hospital-addr">Address:</label>
+                                    <textarea id="apt-hospital-addr" readonly style="background: white; height: 50px; resize: none;"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apt-hospital-phone">Contact Number:</label>
+                                    <input type="text" id="apt-hospital-phone" readonly style="background: white;">
+                                </div>
+                            </div>
+                            
+                            <!-- Appointment Details -->
+                            <h4 style="margin-bottom: 12px;">Appointment Date & Time</h4>
+                            <div class="form-group">
+                                <label for="apt-date">Select Date:</label>
+                                <input type="date" id="apt-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apt-time">Select Time:</label>
+                                <input type="time" id="apt-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apt-notes">Additional Notes (Optional):</label>
+                                <textarea id="apt-notes" style="height: 80px; resize: vertical; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial;"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-save">Schedule Appointment</button>
+                                <button type="button" class="btn-cancel" onclick="closeAppointmentModal()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="content-section">
+                <div class="messages-container">
+                    <div class="card-header">
+                        <h3>📬 Messages & Notifications</h3>
+                        <p class="section-subtitle">Important messages from hospitals</p>
+                    </div>
+                    <div class="messages-list" id="messages-list">
+                        <p class="no-messages" style="text-align: center; color: #999; padding: 40px;">No messages yet.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Records Section -->
+            <section id="certificates" class="content-section">
+                <div class="certificates-container">
+                    <div class="card-header">
+                        <h3>📜 My Certificates</h3>
+                        <p class="section-subtitle">Download your blood donation certificates</p>
+                    </div>
+                    <div class="certificates-list" id="certificates-list">
+                        <p class="no-certificates">No certificates yet. Donate blood to earn your first certificate!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+</section>
